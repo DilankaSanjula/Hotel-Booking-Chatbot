@@ -8,6 +8,11 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - amenities
+  - check_in
+  - check_out
+  - booking
+  - availability
 
 responses:
   utter_greet:
@@ -28,6 +33,22 @@ responses:
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
+
+  utter_amenities:
+  - text: "We're delighted to provide you with information about the facilities we offer. The available amenities are :\n Outdoor swimming pool\n Well-equipped fitness center\n On-site spa \n On-site restaurant"
+  
+  utter_check_in:
+  - text: "Our standard check-in time is 12.00PM to ensure room preparation to high standards"
+
+  utter_check_out:
+  - text: "Our standard check-out time is 2.00PM"
+
+  utter_booking:
+  - text: "Custom Action to be written for reservations"
+
+  utter_availability:
+  - text: "Custom Actions to be written for availability"
+
 
 session_config:
   session_expiration_time: 60

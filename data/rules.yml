@@ -11,3 +11,28 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+- rule: Users asking about amenities
+  steps:
+  - intent: amenities
+  - action: utter_amenities
+
+- rule: Users asking about check in time
+  steps:
+  - intent: check_in
+  - action: utter_check_in
+
+- rule: Users asking about check out time
+  steps:
+  - intent: check_out
+  - action: utter_check_out
+
+- rule: Users asking about availability
+  steps:
+  - intent: availability
+  - action: utter_availability
+
+- rule: Users asking about check out time
+  steps:
+  - intent: booking
+  - action: utter_booking

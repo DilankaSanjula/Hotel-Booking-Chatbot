@@ -89,3 +89,85 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+
+- intent: amenities
+  examples: |
+    - Can you tell me about the amenities on-site, like a pool, gym, spa, or restaurant?
+    - What kinds of facilities can guests access, such as a pool, gym, spa, or restaurant?
+    - Are there any recreational options like a pool, gym, spa, or restaurant for guests to enjoy?
+    - What are the available amenities, including but not limited to a pool, gym, spa, or restaurant?
+    - Could you list the facilities provided, such as a pool, gym, spa, or restaurant?
+    - I'm curious about the amenities here; can you mention any, like a pool, gym, spa, or restaurant?
+    - What recreational features does the property offer, such as a pool, gym, spa, or restaurant?
+    - Tell me about the on-site amenities, specifically mentioning a pool, gym, spa, or restaurant.
+    - Are there any extra features or amenities, like a pool, gym, spa, or restaurant, that I should know about?
+    - Could you describe the available services and amenities, including a pool, gym, spa, or restaurant?
+    - what amenities are available
+    - available amenities?
+
+- intent: check_in
+  examples: |
+    - What is the check-in time?
+    - When is the earliest check-in time?
+    - At what time is check-in available?
+    - What are the check-in hours?
+    - When can I check in?
+    - checkin time?
+    - check in time?
+    - What's the check-in window?
+    - When does check-in start?
+    - What time should I arrive for check-in?
+    - When am I allowed to check in?
+    - What's the check-in schedule?
+
+- intent: check_out
+  examples: |
+    - Could you please tell me the standard check-out time?
+    - I'm curious about the typical check-out time. What is it?
+    - What's the usual check-out time?
+    - Could you inform me about the standard check-out time?
+    - Do you know what time guests are supposed to check out?
+    - I'm not sure about the check-out time. What is it normally?
+    - Is there a specific time I should be aware of for check-out?
+    - Could you clarify the standard check-out time, please?
+    - What time do I need to vacate the room?
+    - When is the check-out time typically?
+    - checkout?
+    - check out time?
+
+- intent: availability
+  examples: |
+    - Is there a double room available for two adults from October 15th to October 20th?
+    - Can you check if there are any suites available for a one-night stay on September 30th?
+    - Do you have any family rooms available for four people from July 10th to July 15th?
+    - Is there a single room available for tonight?
+    - Can you find me a room with a view for a weekend getaway on August 5th?
+    - Are there any accessible rooms available for the elderly from November 5th to November 10th?
+    - I need a pet-friendly room for two adults and a dog from September 25th to October 2nd. Is that possible?
+    - Is there availability for a honeymoon suite for a romantic stay on December 12th?
+    - Can you check if there are any rooms left during the upcoming holiday weekend?
+    - I'm looking for a room with a king-size bed and a balcony for three nights starting on August 25th. Is that available?
+    - Do you have any budget-friendly rooms available for backpackers for the next three days?
+    - Is there a meeting room available for a conference on November 8th?
+
+- intent: booking
+  examples: |
+    - Hello, can you help me book a room at a hotel for two adults and one child for three nights starting on June 15th?
+    - I need a reservation for a business trip. Can you book a single room in a four-star hotel for me from September 10th to September 15th?
+    - What are the available hotels in New York City for the weekend of October 1st to October 3rd?
+    - Please find me a pet-friendly hotel in San Francisco for a week-long stay beginning on July 20th.
+    - Do you have any discounts or special offers for booking a room in Las Vegas for the next weekend?
+    - Can you help me reserve a suite with an ocean view at a beachfront resort for my honeymoon?
+    - I need a last-minute reservation for tonight in Chicago. Can you find me a room in a central location?
+    - What is the cancellation policy for the hotel reservation I'm about to make?
+    - Please book a room for me near the convention center in Orlando for a conference from November 5th to November 7th.
+    - Are there any family-friendly resorts with a kids' club in Hawaii for a vacation starting on December 1st?
+    - Can you make a reservation for two connecting rooms in a downtown hotel in Boston for a family reunion?
+    - I'm looking for an eco-friendly hotel in Costa Rica for a nature retreat in February. Can you assist with the reservation?
+    - What are the room rates and availability for a luxury hotel in Paris for Valentine's Day weekend?
+    - Book a hotel with a gym and complimentary breakfast in Los Angeles for a week-long business trip starting on August 10th.
+
+
+
+
+
