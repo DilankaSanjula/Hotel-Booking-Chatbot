@@ -30,9 +30,9 @@ rules:
 - rule: Users asking about availability
   steps:
   - intent: availability
-  - action: utter_availability
+  - action: action_check_availability
 
-- rule: Users asking about check out time
+- rule: Users performing a reservation
   steps:
   - intent: booking
-  - action: utter_booking
+  - action: action_reservation

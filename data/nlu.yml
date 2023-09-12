@@ -149,6 +149,22 @@ nlu:
     - I'm looking for a room with a king-size bed and a balcony for three nights starting on August 25th. Is that available?
     - Do you have any budget-friendly rooms available for backpackers for the next three days?
     - Is there a meeting room available for a conference on November 8th?
+    - Are [standard]{"entity": "standard_type", "value": "standard"} rooms available?
+    - How many [standard]{"entity": "standard_type", "value": "standard"} type rooms available?
+    - Can i know the availability of [Standard]{"entity": "standard_type", "value": "standard"} rooms?
+    - The number of [Standerd]{"entity": "standard_type", "value": "standard"} type rooms available?
+    - Can i please know how many [standard]{"entity": "standard_type", "value": "standard"} type rooms available for reservation?
+    - Are [deluxe]{"entity": "deluxe_type", "value": "deluxe"} rooms available?
+    - How many [deluxe]{"entity": "deluxe_type", "value": "deluxe"} type rooms available?
+    - Can i know the availability of [deluxe]{"entity": "deluxe_type", "value": "deluxe"} rooms?
+    - The number of [delux]{"entity": "deluxe_type", "value": "deluxe"} type rooms available?
+    - Can i please know how many [Deluxe]{"entity": "deluxe_type", "value": "deluxe"} type rooms available for reservation?
+    - Are [suite]{"entity": "suite_type", "value": "suite"} rooms available?
+    - How many [suites]{"entity": "suite_type", "value": "suite"} type rooms available?
+    - Can i know the availability of [suite]{"entity": "suite_type", "value": "suite"} rooms?
+    - The number of [suitee]{"entity": "suite_type", "value": "suite"} type rooms available?
+    - Can i please know how many [Suite]{"entity": "suite_type", "value": "suite"} type rooms available for reservation?
+    
 
 - intent: booking
   examples: |
