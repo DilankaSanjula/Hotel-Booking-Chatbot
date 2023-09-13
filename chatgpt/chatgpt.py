@@ -3,7 +3,7 @@ import requests
 import re
 import os
  
-api_key = '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'
+
 openai.api_key = api_key
 url = 'https://api.openai.com/v1/engines/text-davinci-003/completions'
 
