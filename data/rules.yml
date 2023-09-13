@@ -32,7 +32,29 @@ rules:
   - intent: availability
   - action: action_check_availability
 
-- rule: Users performing a reservation
+
+- rule: Reservation from activation
   steps:
   - intent: booking
   - action: action_reservation
+
+- rule: affirm reservation
+  steps:
+  - intent: affirm
+  - action: action_reservation
+
+# - rule: Reservation from activation
+#   steps:
+#   - intent: booking
+#   - action: hotel_form
+#   - active_loop: hotel_form
+
+# - rule: Reservation Submission
+#   condition:
+#   - active_loop: hotel_form
+#   steps:
+#   - action: hotel_form
+#   - active_loop: null
+#   - slot_was_set:
+#     - required_slots: email
+#   - action: action_reservation

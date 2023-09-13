@@ -9,22 +9,34 @@ stories:
   - intent: mood_great
   - action: utter_happy
 
-- story: sad path 1
+- story: asking for check-in 
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
+  - intent: check_in
+  - action: utter_check_in
 
-- story: sad path 2
+- story: asking for checkout- details
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_goodbye
+  - intent: check_out
+  - action: utter_check_out
+
+- story: reservations
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: booking
+  - action: action_reservation
+  - intent: affirm
+  - action: action_reservation
+# - story: sad path 2
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: mood_unhappy
+#   - action: utter_cheer_up
+#   - action: utter_did_that_help
+#   - intent: deny
+#   - action: utter_goodbye

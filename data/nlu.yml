@@ -168,21 +168,33 @@ nlu:
 
 - intent: booking
   examples: |
-    - Hello, can you help me book a room at a hotel for two adults and one child for three nights starting on June 15th?
-    - I need a reservation for a business trip. Can you book a single room in a four-star hotel for me from September 10th to September 15th?
-    - What are the available hotels in New York City for the weekend of October 1st to October 3rd?
-    - Please find me a pet-friendly hotel in San Francisco for a week-long stay beginning on July 20th.
-    - Do you have any discounts or special offers for booking a room in Las Vegas for the next weekend?
-    - Can you help me reserve a suite with an ocean view at a beachfront resort for my honeymoon?
-    - I need a last-minute reservation for tonight in Chicago. Can you find me a room in a central location?
-    - What is the cancellation policy for the hotel reservation I'm about to make?
-    - Please book a room for me near the convention center in Orlando for a conference from November 5th to November 7th.
-    - Are there any family-friendly resorts with a kids' club in Hawaii for a vacation starting on December 1st?
+    - Hello, can you help me book a room at a hotel for two adults and one child
+    - please book a room on the [5th of August]{"entity": "check_in"} 
+    - from [10th May 2023]{"entity": "check_in"}  to [15th May 2023]{"entity": "check_out"} 
+    - [1st January]{"entity": "check_in"}
+    - on the [4th of December 2023]{"entity": "check_in"}
+    - required from [8th of Octomber]{"entity": "check_in"} 
+    - required from [8th of November 2023]{"entity": "check_in"} 
+    - I need a reservation for a business trip. Can you book a single room in a four-star hotel for me from [September 10th]{"entity": "check_in"} to [September 15th]{"entity": "check_out"} ?
+    - What are the available hotels in New York City for the weekend of [October 1st 2023]{"entity": "check_in"} to [October 3rd 2023]{"entity": "check_out"} ?
+    - Please find me a pet-friendly hotel in San Francisco for a week-long stay [beginning on July 20th]{"entity": "check_in"}.
+    - Can you help me reserve a [suite]{"entity": "room", "value": "suite"}?
+    - the required room is [standard]{"entity": "room", "value": "standard"} room
+    - [deluxe]{"entity": "room", "value": "deluxe"} room is needed
+    - [suite]{"entity": "room", "value": "suite"}
+    - one [deluxe]{"entity": "room", "value": "deluxe"} room
+    - [standard]{"entity": "room", "value": "standard"} room
+    - Please book a room for me for a conference from [November 5th]{"entity": "check_in"} to [November 7th]{"entity": "check_out"}.
+    - Are there any family-friendly resorts with a kids' club in Hawaii for a vacation starting on [December 1st]{"entity": "check_in"}?
     - Can you make a reservation for two connecting rooms in a downtown hotel in Boston for a family reunion?
-    - I'm looking for an eco-friendly hotel in Costa Rica for a nature retreat in February. Can you assist with the reservation?
-    - What are the room rates and availability for a luxury hotel in Paris for Valentine's Day weekend?
-    - Book a hotel with a gym and complimentary breakfast in Los Angeles for a week-long business trip starting on August 10th.
-
+    - Can you assist with the reservation?
+    - Phone number is [0771473177]{"entity": "phone"} and email is [dilanka@gmail.com]{"entity": "email"}
+    - Phone number is [0312232079]{"entity": "phone"}
+    - email is [samsumgxyz@gmail.com]{"entity": "email"}
+    - My email address is [samsumgxyz@yahoo.com]{"entity": "email"}
+    - And my Phone number is [0113023421]{"entity": "phone"}
+    
+    
 
 
 
