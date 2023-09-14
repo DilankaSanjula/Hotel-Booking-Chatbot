@@ -4,8 +4,7 @@ import re
 import os
 import json
  
-#api_key = os.environ['api_key']
-api_key = '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'
+api_key = os.environ['api_key']
 openai.api_key = api_key
 url = 'https://api.openai.com/v1/engines/text-davinci-003/completions'
 
