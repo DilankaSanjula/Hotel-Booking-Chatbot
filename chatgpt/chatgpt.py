@@ -1,6 +1,5 @@
 import openai
 import requests
-import re
 import os
 import json
  
@@ -9,10 +8,17 @@ openai.api_key = api_key
 url = 'https://api.openai.com/v1/engines/text-davinci-003/completions'
 
 class ChatCompletion:
+
+    """
+    Functionalities to handle Chat Completing using chatgpt.
+
+    """
     def __init__(self):
         print("ChatCompletion")
      
+    # Function now used
     def format_message(self,last_message, role):
+
         if role == "user":
             message = {
                 "role":"user",
@@ -32,25 +38,31 @@ class ChatCompletion:
             ]
 
         messages.append(message)
-        #print(messages)
         return messages
 
     def chat_completion(self, messages):
 
-        #messages = self.format_message(last_message, role)
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
-            messages=messages,
-            temperature=1,
-            max_tokens=256,
-            top_p=1,
-            frequency_penalty=0,
-            presence_penalty=0
-        )
-        return response
-
+        try:
+            response = openai.ChatCompletion.create(
+                model="gpt-3.5-turbo",
+                messages=messages,
+                temperature=1,
+                max_tokens=256,
+                top_p=1,
+                frequency_penalty=0,
+                presence_penalty=0
+            )
+            return response
+        
+        except Exception as e:
+            return {'status':False, 'cause': e}
 
 class ChatEntityExtraction:
+    """
+    Functionalities to handle Entity recognition using chatgpt. Used for testing
+    not used in application. Rasa default entity recognition is used.
+
+    """
     def __init__(self):
         print("EntityExtraction")
      
@@ -91,17 +103,25 @@ class ChatEntityExtraction:
             'temperature': 0.7,  
             'n': 1
         }
-        response = requests.post(url, headers=headers, json=data)
-        #print(response.json())
-        if response.status_code == 200:
-            entities_response = self.extract_entities(response)
-            return entities_response
+        try:
+            response = requests.post(url, headers=headers, json=data)
+            #print(response.json())
+            if response.status_code == 200:
+                entities_response = self.extract_entities(response)
+                return entities_response
+
+        except Exception as e:
+            return {'status':False, 'cause': e}
 
 
 class ChatGPTFallback:
+    """
+    Handles fallbacks and to answer general questions in the context of Hotels
+
+    """
+
     def __init__(self):
         print("Fallback")
-     
 
     def api_call(self, prompt):
         headers = {
@@ -115,10 +135,14 @@ class ChatGPTFallback:
             'temperature': 0.7,  
             'n': 1
         }
-        response = requests.post(url, headers=headers, json=data)
-        if response.status_code == 200:
-            text = response.json()['choices'][0]['text']
-            cleaned_text = text.replace('\n', '')
-            return cleaned_text
+        try:
+            response = requests.post(url, headers=headers, json=data)
+            if response.status_code == 200:
+                text = response.json()['choices'][0]['text']
+                cleaned_text = text.replace('\n', '')
+                return cleaned_text
+            
+        except Exception as e:
+            return {'status':False, 'cause': e}
 
 

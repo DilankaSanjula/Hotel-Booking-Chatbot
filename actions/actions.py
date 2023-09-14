@@ -8,7 +8,11 @@ from chatgpt.chatgpt import *
 import random
 
 class ActionCheckAvailability(Action):
+    """
+    Custom action for to check availability of rooms. To check the availability a 
+    post request is made to the developed mock api.
 
+    """
     def name(self) -> Text:
         return "action_check_availability"
 
@@ -17,42 +21,58 @@ class ActionCheckAvailability(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
         entities = tracker.latest_message.get("entities", [])
-        print(entities)
+        
         hotel_endpoint = "http://35.168.216.250:7005/availability"
 
         if entities:
             if entities[0]['value'] == 'standard':
-                json_obj = {"room_type": "standard"}
-                standard_number = requests.post(hotel_endpoint, json = json_obj).json()
-
-                dispatcher.utter_message(text=f"We are pleased to say that {standard_number} standard rooms are available at the moment")
+                try:
+                    json_obj = {"room_type": "standard"}
+                    standard_number = requests.post(hotel_endpoint, json = json_obj).json()
+                    dispatcher.utter_message(text=f"We are pleased to say that {standard_number} standard rooms are available at the moment")
+                except Exception as e:
+                    return {'status': False, 'cause':e}
 
             if entities[0]['value'] == 'deluxe':
-                json_obj = {"room_type": "deluxe"}
-                deluxe_number = requests.post(hotel_endpoint, json = json_obj).json()
-                dispatcher.utter_message(text=f"We are pleased to say that {deluxe_number} deluxe rooms are available at the moment")
+                try:
+                    json_obj = {"room_type": "deluxe"}
+                    deluxe_number = requests.post(hotel_endpoint, json = json_obj).json()
+                    dispatcher.utter_message(text=f"We are pleased to say that {deluxe_number} deluxe rooms are available at the moment")
+
+                except Exception as e:
+                    return {'status': False, 'cause':e}
 
             if entities[0]['value'] == 'suite':
+                try:
+                    json_obj = {"room_type": "suite"}
+                    suite_number = requests.post(hotel_endpoint, json = json_obj).json()
+                    dispatcher.utter_message(text=f"We are pleased to say that {suite_number} suite rooms are available at the moment")
+
+                except Exception as e:
+                    return {'status': False, 'cause':e}
+        else:
+            try:
+                json_obj = {"room_type": "standard"}
+                standard_number = requests.post(hotel_endpoint, json = json_obj).json()
+                json_obj = {"room_type": "deluxe"}
+                deluxe_number = requests.post(hotel_endpoint, json = json_obj).json()
                 json_obj = {"room_type": "suite"}
                 suite_number = requests.post(hotel_endpoint, json = json_obj).json()
-                dispatcher.utter_message(text=f"We are pleased to say that {suite_number} suite rooms are available at the moment")
-        else:
-            
-            json_obj = {"room_type": "standard"}
-            standard_number = requests.post(hotel_endpoint, json = json_obj).json()
-            json_obj = {"room_type": "deluxe"}
-            deluxe_number = requests.post(hotel_endpoint, json = json_obj).json()
-            json_obj = {"room_type": "suite"}
-            suite_number = requests.post(hotel_endpoint, json = json_obj).json()
 
-            dispatcher.utter_message(text=f"We are pleased to say that the following rooms are available for your stay\n Standard rooms:{standard_number}\n Deluxe rooms: {deluxe_number}\n Suite Rooms: {suite_number}")
-
+                dispatcher.utter_message(text=f"We are pleased to say that the following rooms are available for your stay\n Standard rooms:{standard_number}\n Deluxe rooms: {deluxe_number}\n Suite Rooms: {suite_number}")
+            except Exception as e:
+                return {'status': False, 'cause':e}
             
         return []
 
 
 class ActionReservation(Action):
+    """
+    Custom action for reservations. RASA Slots are used to record entities such as phone, email,
+    check_in date, room type. For human like responses chatgpt is integrated. For chat completion
+    user and assistant messages are appends and recorded/ taken forward using rasa list type slot.
 
+    """
     def name(self) -> Text:
         return "action_reservation"
 
@@ -86,7 +106,7 @@ class ActionReservation(Action):
         
 
             messages.append(message)
-            print(messages)
+
             response = ChatCompletion().chat_completion(messages)
             bot_response = response['choices'][0]['message']['content']
             dispatcher.utter_message(bot_response)
@@ -96,7 +116,7 @@ class ActionReservation(Action):
                     "content": str(bot_response)
                 }
             messages.append(message_bot)
-            print(messages)
+
             return [SlotSet("conversation",messages)]
 
         else:
@@ -119,13 +139,13 @@ class ActionReservation(Action):
 
             messages.append(message_bot)
             entities_list = [room,phone,email,check_in]
-            print(entities_list)
+           
             if not any(elem is None for elem in entities_list):
 
                 hotel_endpoint = "http://35.168.216.250:7005/availability"
                 json_obj = {"room_type": room}
                 room_count = requests.post(hotel_endpoint, json = json_obj).json()
-                print(room_count)
+              
                 if room_count==0:
                     dispatcher.utter_message("Sorry we are currently out of rooms\n\n")
 
@@ -154,6 +174,10 @@ class ActionReservation(Action):
        
 class ActionCancellation(Action):
 
+    """
+    Custom action to handle cancelations.
+    """
+
     def name(self) -> Text:
         return "action_cancellation"
 
@@ -162,13 +186,12 @@ class ActionCancellation(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         reservation_id = tracker.get_slot("reservation_id")
-        print(reservation_id)
+        
         hotel_cancellation = "http://35.168.216.250:7005/cancel_reservation"
 
         reservation_id =  str(reservation_id)
         json_obj = {"reservation_id": reservation_id}
-        #json_obj = json.dumps(json_obj)
-        #print(json_obj.json())
+
         try:
             response= requests.post(hotel_cancellation, json=json_obj).json()
             if response['status'] == 'Successful':
