@@ -52,6 +52,11 @@ rules:
   steps:
   - intent: thank
   - action: utter_thank
+
+- rule: saying no for help
+  steps:
+  - intent: deny
+  - action: utter_thank
 # - rule: Reservation from activation
 #   steps:
 #   - intent: booking
