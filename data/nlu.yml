@@ -30,6 +30,21 @@ nlu:
     - bye bye
     - see you later
 
+- intent: thank
+  examples: |
+    - Thank you
+    - Tnxs
+    - Thank
+    - Thank you very much
+    - Appreciate it, Thank you
+    - Thanks for your service
+    - Thank you for helping me
+    - thank you for your coorporation
+    - thanks
+    - thank
+    - tks
+    - i think i dont need any help. Thanks
+
 - intent: affirm
   examples: |
     - yes
@@ -45,9 +60,11 @@ nlu:
     - n
     - never
     - I don't think so
-    - don't like that
     - no way
     - not really
+    - thats it
+    - not for now
+
 
 - intent: mood_great
   examples: |
@@ -89,6 +106,7 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+    - are you a bot or an assitant
 
 - intent: amenities
   examples: |
@@ -193,9 +211,53 @@ nlu:
     - email is [samsumgxyz@gmail.com]{"entity": "email"}
     - My email address is [samsumgxyz@yahoo.com]{"entity": "email"}
     - And my Phone number is [0113023421]{"entity": "phone"}
+    - make reservation
+    - i need to make a reservation
+    - reservation
+    - help me with reservation
+    - [0771473177]{"entity": "phone"}
+    - [0718010464]{"entity": "phone"}
+    - [0781234567]{"entity": "phone"}
+    - [0779049345]{"entity": "phone"}
+    - [0111473177]{"entity": "phone"}
+    - [9411473177]{"entity": "phone"}
+    - [10th May 2023]{"entity": "check_in"}
+    - [3rd December]{"entity": "check_in"}
+    - [1st Oct]{"entity": "check_in"}
+    - [10 September 2023]{"entity": "check_in"}
+    - [129 september]{"entity": "check_in"}
     
+
+- intent: cancel_reservation
+  examples: |
+    - Please cancel my reservation
+    - I need to cancel my reservation
+    - Please remove my reservation
+    - Is it possible to remove my reservation?
+    - Can you remove the reservation that i put last time
+    - is it possible to remove the reservation i made earlier?
+    - i dont need the reservation i made earlier
+    - reservation should be reoved that i made earlier
+    - i made a reservation yesterday for a suite, is can you cancel the reservation?
+    - can you help me with cancellation
+    - remove reservation
+    - cancel reservation
     
 
-
-
-
+- intent: provide_reservation_id
+  examples: |
+    - my reservation id is [#0114]{"entity": "reservation_id"}
+    - I need to cancel my reservation with id [#9783]{"entity": "reservation_id"}
+    - Please remove my reservation under the id [#6456{"entity": "reservation_id"}
+    - id  is [9008]{"entity": "reservation_id"}
+    - [#3731]{"entity": "reservation_id"}
+    - ID is [#8832]{"entity": "reservation_id"}
+    - Reservation ID: [#7452]{"entity": "reservation_id"}
+    - reservation number [#3246]{"entity": "reservation_id"}
+    - reservation id [#1256]{"entity": "reservation_id"}
+    - [#3359]{"entity": "reservation_id"}
+    - reservation id [#5563]{"entity": "reservation_id"}
+    - [#8725]{"entity": "reservation_id"}
+    - reservation id is [#2345]{"entity": "reservation_id"}
+    - reservation number is [#4782]{"entity": "reservation_id"}
+    - reservation number [#7153]{"entity": "reservation_id"}

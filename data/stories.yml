@@ -31,6 +31,19 @@ stories:
   - action: action_reservation
   - intent: affirm
   - action: action_reservation
+  # - intent: thank
+  # - action: utter_thank
+
+
+- story: cancelling reservations
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: cancel_reservation
+  - action: utter_cancellation
+  - intent: provide_reservation_id
+  - action: action_cancellation
+
 # - story: sad path 2
 #   steps:
 #   - intent: greet

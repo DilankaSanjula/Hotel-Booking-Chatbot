@@ -4,7 +4,8 @@ import re
 import os
 import json
  
-api_key = os.environ['api_key']
+#api_key = os.environ['api_key']
+api_key = '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'
 openai.api_key = api_key
 url = 'https://api.openai.com/v1/engines/text-davinci-003/completions'
 
@@ -122,23 +123,3 @@ class ChatGPTFallback:
             return cleaned_text
 
 
-
-
-
-
-
-# # # last_message = "hi i need to book standard room on the 4th of september"
-
-# text =  "Hi can u make reservation on for a deluxe room"
-# text =  text + '.' + "make the reservation under the name Dilanka"
-# text =  text + '.' + "dilankasanjula@gmail.com 07714731977"
-
-text = "Hi can u make reservation on for a deluxe room"
-
-prompt = f'Extract entities such as name, email, phone, dates, room type in this text where dates should be converted to numberical date format: {text}'
-
-# # # # # text = "what is full board"
-# # # prompt2 = f'Answer this in general hotel context in less than 30 words like answered by a human:{text}'
-#print(ChatCompletion().chat_completion(last_message))#
-#print(ChatEntityExtraction().api_call(prompt))
-# # # # # #print(ChatGPTFallback().api_call(prompt2))

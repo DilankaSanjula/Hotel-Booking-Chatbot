@@ -13,6 +13,9 @@ intents:
   - check_out
   - booking
   - availability
+  - cancel_reservation
+  - provide_reservation_id
+  - thank
 
 entities:
   - standard_type
@@ -26,6 +29,8 @@ entities:
   - check_in
   - check_out
   - conversation
+  - reservation_id
+  
 
 slots:
   conversation:
@@ -98,10 +103,17 @@ slots:
     - type: from_entity
       entity: suite_type
 
+  reservation_id:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: reservation_id
+
 
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
+  - text: "Hi from ABC Hotel, Is there anything i can help you with?"
 
   utter_cheer_up:
   - text: "Here is something to cheer you up:"
@@ -114,10 +126,10 @@ responses:
   - text: "Great, carry on!"
 
   utter_goodbye:
-  - text: "Bye"
+  - text: "Thank you for reaching us, Have a nice day"
 
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+  - text: "I am your digital assistant for ABC Hotel."
 
   utter_amenities:
   - text: "We're delighted to provide you with information about the facilities we offer. The available amenities are :\n Outdoor swimming pool\n Well-equipped fitness center\n On-site spa \n On-site restaurant"
@@ -134,10 +146,17 @@ responses:
   utter_availability:
   - text: "Custom Actions to be written for availability"
 
+  utter_cancellation:
+  - text: "In order to cancel the reservation, please share your reservation id"
+
+  utter_thank:
+  - text: "Its a pleasure. Is there anything that i can help with?"
+
 
 actions:
   - action_check_availability
   - action_reservation
+  - action_cancellation
 
 # forms:
 #   hotel_form:

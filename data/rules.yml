@@ -43,6 +43,15 @@ rules:
   - intent: affirm
   - action: action_reservation
 
+- rule: cancellation
+  steps:
+  - intent: provide_reservation_id
+  - action: action_cancellation
+
+- rule: thanking
+  steps:
+  - intent: thank
+  - action: utter_thank
 # - rule: Reservation from activation
 #   steps:
 #   - intent: booking

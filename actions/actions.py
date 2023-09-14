@@ -130,14 +130,51 @@ class ActionReservation(Action):
                     dispatcher.utter_message("Sorry we are currently out of rooms\n\n")
 
                 else:
-                    ID = random.randint(1111,9999)
+                    ID = str(random.randint(1111,9999))
+                    ID = f"#{ID}"
                     hotel_endpoint_reserve = "http://35.168.216.250:7005/reserve"
-                    json_obj = {"room_type": "standard"}
-                    response_reservation = requests.post(hotel_endpoint_reserve, json = json_obj).json()
-                    dispatcher.utter_message(f"The reservation is made successfully\n\n Reservation ID :{ID}\n Room: {room}\n Date: {check_in}\n Email: {email}\n Contant: {phone}")
+                    json_obj = {
+                            "reservation_id": ID,
+                            "user_email": email,
+                            "user_phone": phone,
+                            "room_type": room,
+                            "check_in_date": check_in
+                        }
+                    try: 
+                        response_reservation = requests.post(hotel_endpoint_reserve, json = json_obj).json()
+                        print(response_reservation)
+                        dispatcher.utter_message(f"The reservation is made successfully\n\n Reservation ID :{ID}\n Room: {room}\n Date: {check_in}\n Email: {email}\n Contant: {phone}")
+                    except:
+                        dispatcher.utter_message("Reservations cannot be made due to technical issue, we will contant you soon")
+
      
             
             return [SlotSet("conversation",messages)]
 
        
-       
+class ActionCancellation(Action):
+
+    def name(self) -> Text:
+        return "action_cancellation"
+
+    async def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        reservation_id = tracker.get_slot("reservation_id")
+        print(reservation_id)
+        hotel_cancellation = "http://35.168.216.250:7005/cancel_reservation"
+
+        reservation_id =  str(reservation_id)
+        json_obj = {"reservation_id": reservation_id}
+        #json_obj = json.dumps(json_obj)
+        #print(json_obj.json())
+        try:
+            response= requests.post(hotel_cancellation, json=json_obj).json()
+            if response['status'] == 'Successful':
+                dispatcher.utter_message(text=f"We have removed your reservation under {reservation_id}")
+        except:
+            print('False')
+            dispatcher.utter_message(text=f"Please enter a valid reservation ID")
+                
+        return []
