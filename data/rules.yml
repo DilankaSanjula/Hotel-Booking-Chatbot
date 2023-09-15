@@ -38,10 +38,15 @@ rules:
   - intent: booking
   - action: action_reservation
 
-- rule: affirm reservation
+# - rule: affirm reservation
+#   steps:
+#   - intent: affirm
+#   - action: action_reservation
+- rule: affirm
   steps:
   - intent: affirm
-  - action: action_reservation
+  - action: utter_thank
+
 
 - rule: cancellation
   steps:
@@ -53,10 +58,14 @@ rules:
   - intent: thank
   - action: utter_thank
 
-- rule: saying no for help
+- rule: out_of_scope_gpt
   steps:
-  - intent: deny
-  - action: utter_thank
+  - intent: out_of_rasa_scope
+  - action: action_gpt_fallback
+# - rule: saying no for help
+#   steps:
+#   - intent: deny
+#   - action: utter_thank
 # - rule: Reservation from activation
 #   steps:
 #   - intent: booking

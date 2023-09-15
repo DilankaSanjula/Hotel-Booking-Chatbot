@@ -29,10 +29,10 @@ stories:
   - action: utter_greet
   - intent: booking
   - action: action_reservation
-  - intent: affirm
-  - action: action_reservation
-  # - intent: thank
-  # - action: utter_thank
+  # - intent: affirm
+  # - action: action_reservation
+  - intent: thank
+  - action: utter_thank
 
 
 - story: cancelling reservations

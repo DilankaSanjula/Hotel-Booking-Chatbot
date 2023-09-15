@@ -53,6 +53,7 @@ nlu:
     - of course
     - that sounds good
     - correct
+    - yes, i need more help
 
 - intent: deny
   examples: |
@@ -261,3 +262,16 @@ nlu:
     - reservation id is [#2345]{"entity": "reservation_id"}
     - reservation number is [#4782]{"entity": "reservation_id"}
     - reservation number [#7153]{"entity": "reservation_id"}
+
+
+- intent: out_of_rasa_scope
+  examples: |
+    - what is 2 + 5
+    - what is fullboard 
+    - explain me about half board stays
+    - what are the general check in check out times
+    - i need to know about amentites are
+    - difference between a cocktail and a mocktail
+    - What is a hotels star rating
+    - please differentiate between 
+    - Can you explain the difference between amenities and facilities?

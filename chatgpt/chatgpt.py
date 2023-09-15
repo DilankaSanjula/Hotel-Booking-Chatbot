@@ -3,20 +3,20 @@ import requests
 import os
 import json
  
-api_key = os.environ['api_key']
+api_key = os.environ['API_KEY']
 openai.api_key = api_key
 url = 'https://api.openai.com/v1/engines/text-davinci-003/completions'
 
 class ChatCompletion:
 
     """
-    Functionalities to handle Chat Completing using chatgpt.
+    Functionalities to handle Chat Completion using chatgpt.
 
     """
     def __init__(self):
         print("ChatCompletion")
      
-    # Function now used
+    # Function not used
     def format_message(self,last_message, role):
 
         if role == "user":
@@ -41,6 +41,10 @@ class ChatCompletion:
         return messages
 
     def chat_completion(self, messages):
+        """
+        The main input is the messages parameter. Messages must be an array of message objects,
+        where each object has a role (either "system", "user", or "assistant") and content. 
+        """
 
         try:
             response = openai.ChatCompletion.create(
@@ -121,7 +125,7 @@ class ChatGPTFallback:
     """
 
     def __init__(self):
-        print("Fallback")
+        print("GPT_Fallback")
 
     def api_call(self, prompt):
         headers = {
@@ -144,5 +148,4 @@ class ChatGPTFallback:
             
         except Exception as e:
             return {'status':False, 'cause': e}
-
 

@@ -95,7 +95,8 @@ class ActionReservation(Action):
                     "role": "system",
                     "content": "you are a helpful assistant of a Hotel. Need to ask the user about phone,\
                         email,check in date and room type for reservations. The available room types are standard, deluxe and suite. \
-                        Make it short and human like. For further details contact number is +94119123123"
+                        Make it short and human like. For further details contact number is +94119123123. Dont ask for confirmation after\
+                        all room, email,chec in date and phone are retrieved"
                 }
                 ]
             
@@ -164,6 +165,8 @@ class ActionReservation(Action):
                         response_reservation = requests.post(hotel_endpoint_reserve, json = json_obj).json()
                         print(response_reservation)
                         dispatcher.utter_message(f"The reservation is made successfully\n\n Reservation ID :{ID}\n Room: {room}\n Date: {check_in}\n Email: {email}\n Contant: {phone}")
+
+                        return [SlotSet(slot, None) for slot in tracker.slots.keys()]
                     except:
                         dispatcher.utter_message("Reservations cannot be made due to technical issue, we will contant you soon")
 
@@ -175,7 +178,7 @@ class ActionReservation(Action):
 class ActionCancellation(Action):
 
     """
-    Custom action to handle cancelations.
+    Custom action to handle cancelations. A to  post request to the mock API is made to record a cancellation
     """
 
     def name(self) -> Text:
@@ -199,5 +202,32 @@ class ActionCancellation(Action):
         except:
             print('False')
             dispatcher.utter_message(text=f"Please enter a valid reservation ID")
+                
+        return []
+    
+
+class ActionCHATGPTFAllbak(Action):
+
+    """
+    Custom action to handle cancelations. A to  post request to the mock API is made to record a cancellation
+    """
+
+    def name(self) -> Text:
+        return "action_gpt_fallback"
+
+    async def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+    
+        
+        try:
+            last_user_message = tracker.latest_message.get("text")
+            prompt = f"Answer this only if it is realted to hotels only:{last_user_message}"
+            gpt_resp= ChatGPTFallback().api_call(prompt)
+            dispatcher.utter_message(text=gpt_resp)
+        except Exception as e:
+            print(e)
+            dispatcher.utter_message(text=f"We are unable to answer this question. Please contact us")
                 
         return []

@@ -16,6 +16,7 @@ intents:
   - cancel_reservation
   - provide_reservation_id
   - thank
+  - out_of_rasa_scope
 
 entities:
   - standard_type
@@ -150,13 +151,14 @@ responses:
   - text: "In order to cancel the reservation, please share your reservation id"
 
   utter_thank:
-  - text: "Its a pleasure. Is there anything that i can help with?"
+  - text: "It was my pleasure!😊"
 
 
 actions:
   - action_check_availability
   - action_reservation
   - action_cancellation
+  - action_gpt_fallback
 
 # forms:
 #   hotel_form:
