@@ -21,8 +21,6 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-    env_file:
-      - aws_creds.env
     container_name: rasa_action_server
     volumes:
       - ./:/Hotel-Booking-Chatbot
