@@ -209,7 +209,7 @@ class ActionCancellation(Action):
 class ActionCHATGPTFAllbak(Action):
 
     """
-    Custom action to handle cancelations. A to  post request to the mock API is made to record a cancellation
+    Custom action to handled advanced queries. Fallback when a question out of rasa's scope is entered.
     """
 
     def name(self) -> Text:
@@ -218,8 +218,6 @@ class ActionCHATGPTFAllbak(Action):
     async def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        
-    
         
         try:
             last_user_message = tracker.latest_message.get("text")
