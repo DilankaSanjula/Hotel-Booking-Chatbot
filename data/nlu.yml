@@ -1,0 +1,277 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: thank
+  examples: |
+    - Thank you
+    - Tnxs
+    - Thank
+    - Thank you very much
+    - Appreciate it, Thank you
+    - Thanks for your service
+    - Thank you for helping me
+    - thank you for your coorporation
+    - thanks
+    - thank
+    - tks
+    - i think i dont need any help. Thanks
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+    - yes, i need more help
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - no way
+    - not really
+    - thats it
+    - not for now
+
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+    - are you a bot or an assitant
+
+- intent: amenities
+  examples: |
+    - Can you tell me about the amenities on-site, like a pool, gym, spa, or restaurant?
+    - What kinds of facilities can guests access, such as a pool, gym, spa, or restaurant?
+    - Are there any recreational options like a pool, gym, spa, or restaurant for guests to enjoy?
+    - What are the available amenities, including but not limited to a pool, gym, spa, or restaurant?
+    - Could you list the facilities provided, such as a pool, gym, spa, or restaurant?
+    - I'm curious about the amenities here; can you mention any, like a pool, gym, spa, or restaurant?
+    - What recreational features does the property offer, such as a pool, gym, spa, or restaurant?
+    - Tell me about the on-site amenities, specifically mentioning a pool, gym, spa, or restaurant.
+    - Are there any extra features or amenities, like a pool, gym, spa, or restaurant, that I should know about?
+    - Could you describe the available services and amenities, including a pool, gym, spa, or restaurant?
+    - what amenities are available
+    - available amenities?
+
+- intent: check_in
+  examples: |
+    - What is the check-in time?
+    - When is the earliest check-in time?
+    - At what time is check-in available?
+    - What are the check-in hours?
+    - When can I check in?
+    - checkin time?
+    - check in time?
+    - What's the check-in window?
+    - When does check-in start?
+    - What time should I arrive for check-in?
+    - When am I allowed to check in?
+    - What's the check-in schedule?
+
+- intent: check_out
+  examples: |
+    - Could you please tell me the standard check-out time?
+    - I'm curious about the typical check-out time. What is it?
+    - What's the usual check-out time?
+    - Could you inform me about the standard check-out time?
+    - Do you know what time guests are supposed to check out?
+    - I'm not sure about the check-out time. What is it normally?
+    - Is there a specific time I should be aware of for check-out?
+    - Could you clarify the standard check-out time, please?
+    - What time do I need to vacate the room?
+    - When is the check-out time typically?
+    - checkout?
+    - check out time?
+
+- intent: availability
+  examples: |
+    - Is there a double room available for two adults from October 15th to October 20th?
+    - Can you check if there are any suites available for a one-night stay on September 30th?
+    - Do you have any family rooms available for four people from July 10th to July 15th?
+    - Is there a single room available for tonight?
+    - Can you find me a room with a view for a weekend getaway on August 5th?
+    - Are there any accessible rooms available for the elderly from November 5th to November 10th?
+    - I need a pet-friendly room for two adults and a dog from September 25th to October 2nd. Is that possible?
+    - Is there availability for a honeymoon suite for a romantic stay on December 12th?
+    - Can you check if there are any rooms left during the upcoming holiday weekend?
+    - I'm looking for a room with a king-size bed and a balcony for three nights starting on August 25th. Is that available?
+    - Do you have any budget-friendly rooms available for backpackers for the next three days?
+    - Is there a meeting room available for a conference on November 8th?
+    - Are [standard]{"entity": "standard_type", "value": "standard"} rooms available?
+    - How many [standard]{"entity": "standard_type", "value": "standard"} type rooms available?
+    - Can i know the availability of [Standard]{"entity": "standard_type", "value": "standard"} rooms?
+    - The number of [Standerd]{"entity": "standard_type", "value": "standard"} type rooms available?
+    - Can i please know how many [standard]{"entity": "standard_type", "value": "standard"} type rooms available for reservation?
+    - Are [deluxe]{"entity": "deluxe_type", "value": "deluxe"} rooms available?
+    - How many [deluxe]{"entity": "deluxe_type", "value": "deluxe"} type rooms available?
+    - Can i know the availability of [deluxe]{"entity": "deluxe_type", "value": "deluxe"} rooms?
+    - The number of [delux]{"entity": "deluxe_type", "value": "deluxe"} type rooms available?
+    - Can i please know how many [Deluxe]{"entity": "deluxe_type", "value": "deluxe"} type rooms available for reservation?
+    - Are [suite]{"entity": "suite_type", "value": "suite"} rooms available?
+    - How many [suites]{"entity": "suite_type", "value": "suite"} type rooms available?
+    - Can i know the availability of [suite]{"entity": "suite_type", "value": "suite"} rooms?
+    - The number of [suitee]{"entity": "suite_type", "value": "suite"} type rooms available?
+    - Can i please know how many [Suite]{"entity": "suite_type", "value": "suite"} type rooms available for reservation?
+    
+
+- intent: booking
+  examples: |
+    - Hello, can you help me book a room at a hotel for two adults and one child
+    - please book a room on the [5th of August]{"entity": "check_in"} 
+    - from [10th May 2023]{"entity": "check_in"}  to [15th May 2023]{"entity": "check_out"} 
+    - [1st January]{"entity": "check_in"}
+    - on the [4th of December 2023]{"entity": "check_in"}
+    - required from [8th of Octomber]{"entity": "check_in"} 
+    - required from [8th of November 2023]{"entity": "check_in"} 
+    - I need a reservation for a business trip. Can you book a single room in a four-star hotel for me from [September 10th]{"entity": "check_in"} to [September 15th]{"entity": "check_out"} ?
+    - What are the available hotels in New York City for the weekend of [October 1st 2023]{"entity": "check_in"} to [October 3rd 2023]{"entity": "check_out"} ?
+    - Please find me a pet-friendly hotel in San Francisco for a week-long stay [beginning on July 20th]{"entity": "check_in"}.
+    - Can you help me reserve a [suite]{"entity": "room", "value": "suite"}?
+    - the required room is [standard]{"entity": "room", "value": "standard"} room
+    - [deluxe]{"entity": "room", "value": "deluxe"} room is needed
+    - [suite]{"entity": "room", "value": "suite"}
+    - one [deluxe]{"entity": "room", "value": "deluxe"} room
+    - [standard]{"entity": "room", "value": "standard"} room
+    - Please book a room for me for a conference from [November 5th]{"entity": "check_in"} to [November 7th]{"entity": "check_out"}.
+    - Are there any family-friendly resorts with a kids' club in Hawaii for a vacation starting on [December 1st]{"entity": "check_in"}?
+    - Can you make a reservation for two connecting rooms in a downtown hotel in Boston for a family reunion?
+    - Can you assist with the reservation?
+    - Phone number is [0771473177]{"entity": "phone"} and email is [dilanka@gmail.com]{"entity": "email"}
+    - Phone number is [0312232079]{"entity": "phone"}
+    - email is [samsumgxyz@gmail.com]{"entity": "email"}
+    - My email address is [samsumgxyz@yahoo.com]{"entity": "email"}
+    - And my Phone number is [0113023421]{"entity": "phone"}
+    - make reservation
+    - i need to make a reservation
+    - reservation
+    - help me with reservation
+    - [0771473177]{"entity": "phone"}
+    - [0718010464]{"entity": "phone"}
+    - [0781234567]{"entity": "phone"}
+    - [0779049345]{"entity": "phone"}
+    - [0111473177]{"entity": "phone"}
+    - [9411473177]{"entity": "phone"}
+    - [10th May 2023]{"entity": "check_in"}
+    - [3rd December]{"entity": "check_in"}
+    - [1st Oct]{"entity": "check_in"}
+    - [10 September 2023]{"entity": "check_in"}
+    - [129 september]{"entity": "check_in"}
+    
+
+- intent: cancel_reservation
+  examples: |
+    - Please cancel my reservation
+    - I need to cancel my reservation
+    - Please remove my reservation
+    - Is it possible to remove my reservation?
+    - Can you remove the reservation that i put last time
+    - is it possible to remove the reservation i made earlier?
+    - i dont need the reservation i made earlier
+    - reservation should be reoved that i made earlier
+    - i made a reservation yesterday for a suite, is can you cancel the reservation?
+    - can you help me with cancellation
+    - remove reservation
+    - cancel reservation
+    
+
+- intent: provide_reservation_id
+  examples: |
+    - my reservation id is [#0114]{"entity": "reservation_id"}
+    - I need to cancel my reservation with id [#9783]{"entity": "reservation_id"}
+    - Please remove my reservation under the id [#6456{"entity": "reservation_id"}
+    - id  is [9008]{"entity": "reservation_id"}
+    - [#3731]{"entity": "reservation_id"}
+    - ID is [#8832]{"entity": "reservation_id"}
+    - Reservation ID: [#7452]{"entity": "reservation_id"}
+    - reservation number [#3246]{"entity": "reservation_id"}
+    - reservation id [#1256]{"entity": "reservation_id"}
+    - [#3359]{"entity": "reservation_id"}
+    - reservation id [#5563]{"entity": "reservation_id"}
+    - [#8725]{"entity": "reservation_id"}
+    - reservation id is [#2345]{"entity": "reservation_id"}
+    - reservation number is [#4782]{"entity": "reservation_id"}
+    - reservation number [#7153]{"entity": "reservation_id"}
+
+
+- intent: out_of_rasa_scope
+  examples: |
+    - what is 2 + 5
+    - what is fullboard 
+    - explain me about half board stays
+    - what are the general check in check out times
+    - i need to know about amentites are
+    - difference between a cocktail and a mocktail
+    - What is a hotels star rating
+    - please differentiate between 
+    - Can you explain the difference between amenities and facilities?

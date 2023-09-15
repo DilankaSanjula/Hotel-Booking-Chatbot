@@ -1,0 +1,174 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - amenities
+  - check_in
+  - check_out
+  - booking
+  - availability
+  - cancel_reservation
+  - provide_reservation_id
+  - thank
+  - out_of_rasa_scope
+
+entities:
+  - standard_type
+  - deluxe_type
+  - suite_type
+  - date
+  - phone
+  - name
+  - email
+  - room
+  - check_in
+  - check_out
+  - conversation
+  - reservation_id
+  
+
+slots:
+  conversation:
+    type: list
+    mappings:
+    - type: from_entity
+      entity: conversation
+    
+  check_out:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: check_out
+
+  check_in:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: check_in
+
+  phone:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: phone
+  
+  name:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: name
+
+  email:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: email
+
+  room:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: room
+
+    
+  standard_type:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: standard_type
+
+  deluxe_type:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: deluxe_type
+
+  suite_type:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: suite_type
+
+  reservation_id:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: reservation_id
+
+
+responses:
+  utter_greet:
+  - text: "Hi from ABC Hotel, Is there anything i can help you with?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Thank you for reaching us, Have a nice day"
+
+  utter_iamabot:
+  - text: "I am your digital assistant for ABC Hotel."
+
+  utter_amenities:
+  - text: "We're delighted to provide you with information about the facilities we offer. The available amenities are :\n Outdoor swimming pool\n Well-equipped fitness center\n On-site spa \n On-site restaurant"
+  
+  utter_check_in:
+  - text: "Our standard check-in time is 12.00PM to ensure room preparation to high standards"
+
+  utter_check_out:
+  - text: "Our standard check-out time is 2.00PM"
+
+  utter_booking:
+  - text: "Custom Action to be written for reservations"
+
+  utter_availability:
+  - text: "Custom Actions to be written for availability"
+
+  utter_cancellation:
+  - text: "In order to cancel the reservation, please share your reservation id"
+
+  utter_thank:
+  - text: "It was my pleasure!😊"
+
+
+actions:
+  - action_check_availability
+  - action_reservation
+  - action_cancellation
+  - action_gpt_fallback
+
+# forms:
+#   hotel_form:
+#     required_slots:
+#       - phone
+#       - email
+#       - room
+#       - check_in
+#       - check_out
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

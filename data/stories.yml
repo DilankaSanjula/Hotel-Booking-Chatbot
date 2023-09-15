@@ -1,0 +1,55 @@
+version: "3.1"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: asking for check-in 
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: check_in
+  - action: utter_check_in
+
+- story: asking for checkout- details
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: check_out
+  - action: utter_check_out
+
+- story: reservations
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: booking
+  - action: action_reservation
+  # - intent: affirm
+  # - action: action_reservation
+  - intent: thank
+  - action: utter_thank
+
+
+- story: cancelling reservations
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: cancel_reservation
+  - action: utter_cancellation
+  - intent: provide_reservation_id
+  - action: action_cancellation
+
+# - story: sad path 2
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: mood_unhappy
+#   - action: utter_cheer_up
+#   - action: utter_did_that_help
+#   - intent: deny
+#   - action: utter_goodbye
