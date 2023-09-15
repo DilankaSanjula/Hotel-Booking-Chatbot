@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+
+  rasa_enable_api:
+    image: global_rasa_enable_api
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: rasa_enable_api
+    volumes:
+      - ./:/Hotel-Booking-Chatbot
+    restart: always
+    ports:
+      - 5005:5005
+    network_mode: default
+    command: rasa run --enable-api --cors *
+
+  rasa_action_server:
+    image: global_rasa_action_server
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    env_file:
+      - aws_creds.env
+    container_name: rasa_action_server
+    volumes:
+      - ./:/Hotel-Booking-Chatbot
+    restart: always
+    ports:
+      - 5055:5055
+    network_mode: default
+    command: rasa run actions

@@ -1,0 +1,17 @@
+FROM python:3.8
+
+ENV PYTHONPATH=/Hotel-Booking-Chatbot
+
+WORKDIR /Hotel-Booking-Chatbot
+
+COPY requirements.txt /Hotel-Booking-Chatbot/requirements.txt
+
+RUN pip3 --no-cache-dir --use-deprecated=legacy-resolver install -r /Hotel-Booking-Chatbot/requirements.txt
+
+COPY . ./
+EXPOSE 5005
+EXPOSE 5055
+
+ARG API_KEY
+
+ENV API_KEY $API_KEY
